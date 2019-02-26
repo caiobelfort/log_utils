@@ -7,7 +7,7 @@ setup(
     author='Caio Belfort',
     author_email='caiobelfort90@gmail.com',
     license='GPL',
-    py_modules=['log_utils'],
+    packages=['log_utils'],
     zip_safe=False,
     classifiers=[
         'Development Status :: 3 - Alpha',
