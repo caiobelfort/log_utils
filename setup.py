@@ -8,12 +8,11 @@ setup(
     author_email='caiobelfort90@gmail.com',
     license='GPL',
     packages=['log_utils'],
-    zip_safe=False,
     classifiers=[
         'Development Status :: 3 - Alpha',
-        'Topic :: Software Development :: Database',
+        'Topic :: Software Development',
         'Intended Audience :: Developers',
-        'Programming Language :: Python :: 3.7',
-        'Operation System :: POSIX'
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
     ]
 )
