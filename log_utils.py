@@ -1,3 +1,5 @@
+
+
 import logging
 import datetime
 import errno
@@ -36,6 +38,8 @@ class FileProcessorHandler(logging.Handler):
                     raise
                 logging.warning("%s already exists", self._get_log_directory())
 
+        self._setup_file_handler()
+
     def setFormatter(self, formatter):
         if self.handler is not None:
             self.handler.setFormatter(formatter)
@@ -44,9 +48,9 @@ class FileProcessorHandler(logging.Handler):
         if self.handler is not None:
             self.handler.setLevel(level)
 
-    def _setup_file_handler(self, filename):
+    def _setup_file_handler(self):
 
-        local_loc = self._init_file('%d.log' % self._get_log_directory())
+        local_loc = self._init_file('%d.log' % self._get_current_file_number())
 
         self.handler = logging.FileHandler(local_loc)
         self.handler.setFormatter(self.formatter)
@@ -84,4 +88,5 @@ class FileProcessorHandler(logging.Handler):
     def _get_current_file_number(self):
 
         file_list = glob(join(self._get_log_directory(), '*.log'))
-        return max([int(splitext(basename(f))[0]) for f in file_list]) if file_list else 1
+        last_file_number = max([int(splitext(basename(f))[0]) for f in file_list]) if file_list else 0
+        return last_file_number + 1
